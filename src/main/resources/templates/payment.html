@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Online Payment | SVS Vastra Collections</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="logo">
+        SVS Vastra Collections
+    </div>
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="/">Home</a>
+        </li>
+
+        <li>
+            <a href="/shop">Shop</a>
+        </li>
+
+        <li>
+            <a href="/cart">Cart</a>
+        </li>
+
+        <li>
+            <a href="/checkout">Checkout</a>
+        </li>
+
+        <li>
+            <a href="/login">Login</a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<section class="checkout">
+
+    <h1>Online Payment</h1>
+
+    <p>
+        You selected:
+        <strong th:text="${pendingOrder.paymentMethod}">
+            UPI
+        </strong>
+    </p>
+
+
+    <div class="payment-summary">
+
+        <h2>Order Information</h2>
+
+        <p>
+            Customer:
+            <strong th:text="${pendingOrder.customerName}">
+                Customer Name
+            </strong>
+        </p>
+
+        <p>
+            Payment Method:
+            <strong th:text="${pendingOrder.paymentMethod}">
+                UPI
+            </strong>
+        </p>
+
+    </div>
+
+
+    <div class="online-payment-box">
+
+        <h2>
+            <i class="fas fa-credit-card"></i>
+            Payment
+        </h2>
+
+        <p>
+            This is the online payment step for your order.
+        </p>
+
+        <form action="/payment/process" method="post">
+
+            <button type="submit">
+                Pay Now
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <p>
+        <a href="/checkout">
+            ← Back to Checkout
+        </a>
+    </p>
+
+</section>
+
+
+<script src="/js/app.js"></script>
+
+</body>
+</html>

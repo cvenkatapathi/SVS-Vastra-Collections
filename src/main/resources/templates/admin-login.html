@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Login | SVS Vastra Collections</title>
+
+
+    <link rel="stylesheet"
+          href="/css/admin.css">
+
+
+    <link rel="stylesheet"
+          href="/css/style.css">
+
+    <link rel="stylesheet"
+          href="/css/navbar.css">
+
+    <link rel="stylesheet"
+          href="/css/responsive.css">
+
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body class="admin-login-page">
+
+
+<!--  ADMIN LOGIN NAVBAR  -->
+
+<nav class="navbar admin-login-navbar">
+
+    <div class="logo">
+        <i class="fas fa-user-shield"></i>
+        SVS Admin
+    </div>
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="/">
+                <i class="fas fa-store"></i>
+                Website
+            </a>
+        </li>
+
+        <li>
+            <a href="/admin/login"
+               class="active">
+                <i class="fas fa-right-to-bracket"></i>
+                Admin Login
+            </a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!--   LOGIN SECTION   -->
+
+<section class="admin-login-section">
+
+    <div class="admin-login-card">
+
+        <div class="admin-login-icon">
+            <i class="fas fa-user-shield"></i>
+        </div>
+
+        <h1>
+            Administrator Login
+        </h1>
+
+        <p class="admin-login-description">
+            Only authorized administrators can access this panel.
+        </p>
+
+
+        <!-- Login Error -->
+
+        <div class="admin-login-error"
+             th:if="${param.error}">
+
+            <i class="fas fa-circle-exclamation"></i>
+
+            Invalid username or password.
+
+        </div>
+
+
+        <form action="/admin/login"
+              method="post"
+              class="admin-login-form">
+
+
+            <div class="admin-input-group">
+
+                <label for="username">
+                    Username
+                </label>
+
+                <div class="admin-input-wrapper">
+
+                    <i class="fas fa-user"></i>
+
+                    <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            placeholder="Enter admin username"
+                            required>
+
+                </div>
+
+            </div>
+
+
+            <div class="admin-input-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <div class="admin-input-wrapper">
+
+                    <i class="fas fa-lock"></i>
+
+                    <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter password"
+                            required>
+
+                </div>
+
+            </div>
+
+
+            <button type="submit"
+                    class="admin-login-button">
+
+                <i class="fas fa-right-to-bracket"></i>
+
+                Login
+
+            </button>
+
+
+        </form>
+
+
+        <a href="/"
+           class="back-to-website">
+
+            <i class="fas fa-arrow-left"></i>
+            Back to Website
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<script src="/js/app.js"></script>
+
+</body>
+
+</html>

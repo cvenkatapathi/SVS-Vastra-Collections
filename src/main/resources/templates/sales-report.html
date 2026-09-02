@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sales Report | SVS Vastra Collections</title>
+
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<div class="admin-container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <h2>SVS Admin</h2>
+
+        <ul>
+            <li>
+                <a href="/admin/dashboard">Dashboard</a>
+            </li>
+
+            <li>
+                <a href="/admin/add-product">Add Product</a>
+            </li>
+
+            <li>
+                <a href="/admin/products">Manage Products</a>
+            </li>
+
+            <li>
+                <a href="/admin/orders">Orders</a>
+            </li>
+
+            <li>
+                <a href="/admin/customers">Customers</a>
+            </li>
+
+            <li>
+                <a href="/admin/sales-report" class="active">Sales Report</a>
+            </li>
+
+            <li>
+                <a href="/admin/settings">Settings</a>
+            </li>
+
+            <li>
+                <a href="/admin/login">Logout</a>
+            </li>
+        </ul>
+
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="dashboard-content">
+
+        <h1>Sales Report</h1>
+
+
+        <!-- Sales Summary -->
+        <div class="dashboard-cards">
+
+            <div class="card">
+                <h2>
+                    ₹<span th:text="${totalRevenue}">0</span>
+                </h2>
+                <p>Total Revenue</p>
+            </div>
+
+
+            <div class="card">
+                <h2 th:text="${totalOrders}">
+                    0
+                </h2>
+                <p>Total Orders</p>
+            </div>
+
+
+            <div class="card">
+                <h2 th:text="${deliveredOrders}">
+                    0
+                </h2>
+                <p>Delivered Orders</p>
+            </div>
+
+
+            <div class="card">
+                <h2>
+                    ₹<span th:text="${averageOrderValue}">0</span>
+                </h2>
+                <p>Average Order Value</p>
+            </div>
+
+        </div>
+
+
+        <!-- Monthly Sales -->
+        <h2>Monthly Sales</h2>
+
+        <table class="admin-table">
+
+            <thead>
+            <tr>
+                <th>Month</th>
+                <th>Orders</th>
+                <th>Revenue</th>
+            </tr>
+            </thead>
+
+
+            <tbody>
+
+            <tr>
+                <td>January</td>
+                <td th:text="${monthlyOrders['JANUARY']}">0</td>
+                <td>
+                    ₹<span th:text="${monthlyRevenue['JANUARY']}">0</span>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>February</td>
+                <td th:text="${monthlyOrders['FEBRUARY']}">0</td>
+                <td>
+                    ₹<span th:text="${monthlyRevenue['FEBRUARY']}">0</span>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>March</td>
+                <td th:text="${monthlyOrders['MARCH']}">0</td>
+                <td>
+                    ₹<span th:text="${monthlyRevenue['MARCH']}">0</span>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>April</td>
+                <td th:text="${monthlyOrders['APRIL']}">0</td>
+                <td>
+                    ₹<span th:text="${monthlyRevenue['APRIL']}">0</span>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>May</td>
+                <td th:text="${monthlyOrders['MAY']}">0</td>
+                <td>
+                    ₹<span th:text="${monthlyRevenue['MAY']}">0</span>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>June</td>
+                <td th:text="${monthlyOrders['JUNE']}">0</td>
+                <td>
+                    ₹<span th:text="${monthlyRevenue['JUNE']}">0</span>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>July</td>
+                <td th:text="${monthlyOrders['JULY']}">0</td>
+                <td>
+                    ₹<span th:text="${monthlyRevenue['JULY']}">0</span>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>August</td>
+                <td th:text="${monthlyOrders['AUGUST']}">0</td>
+                <td>
+                    ₹<span th:text="${monthlyRevenue['AUGUST']}">0</span>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>September</td>
+                <td th:text="${monthlyOrders['SEPTEMBER']}">0</td>
+                <td>
+                    ₹<span th:text="${monthlyRevenue['SEPTEMBER']}">0</span>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>October</td>
+                <td th:text="${monthlyOrders['OCTOBER']}">0</td>
+                <td>
+                    ₹<span th:text="${monthlyRevenue['OCTOBER']}">0</span>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>November</td>
+                <td th:text="${monthlyOrders['NOVEMBER']}">0</td>
+                <td>
+                    ₹<span th:text="${monthlyRevenue['NOVEMBER']}">0</span>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>December</td>
+                <td th:text="${monthlyOrders['DECEMBER']}">0</td>
+                <td>
+                    ₹<span th:text="${monthlyRevenue['DECEMBER']}">0</span>
+                </td>
+            </tr>
+
+            </tbody>
+
+        </table>
+
+    </main>
+
+</div>
+
+
+<script src="js/app.js"></script>
+
+</body>
+</html>

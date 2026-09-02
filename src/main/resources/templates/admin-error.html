@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Error | SVS Vastra Collections</title>
+
+    <link rel="stylesheet" href="/css/admin.css">
+
+</head>
+
+<body>
+
+<div class="admin-container">
+
+    <aside class="sidebar">
+
+        <h2>SVS Admin</h2>
+
+        <ul>
+
+            <li>
+                <a href="/admin/dashboard">
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="/admin/add-product">
+                    Add Product
+                </a>
+            </li>
+
+            <li>
+                <a href="/admin/products">
+                    Manage Products
+                </a>
+            </li>
+
+            <li>
+                <a href="/admin/orders">
+                    Orders
+                </a>
+            </li>
+
+            <li>
+                <a href="/admin/customers">
+                    Customers
+                </a>
+            </li>
+
+            <li>
+                <a href="/admin/sales-report">
+                    Sales Report
+                </a>
+            </li>
+
+            <li>
+                <a href="/admin/settings">
+                    Settings
+                </a>
+            </li>
+
+            <li>
+                <a href="/admin/logout">
+                    Logout
+                </a>
+            </li>
+
+        </ul>
+
+    </aside>
+
+
+    <main class="dashboard-content">
+
+        <div class="customer-details-card">
+
+            <h1>Something went wrong</h1>
+
+            <p class="page-description"
+               th:text="${errorMessage}">
+                Requested item was not found.
+            </p>
+
+            <a href="/admin/dashboard"
+               class="back-customers-btn">
+                ← Back to Dashboard
+            </a>
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Manage Orders | SVS Vastra Collections</title>
+
+    <link rel="stylesheet" href="/css/admin.css">
+
+    <link rel="stylesheet" href="/css/responsive.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<aside class="sidebar">
+
+    <h2>SVS Admin</h2>
+
+    <ul>
+
+        <li>
+            <a href="/admin/dashboard">
+                Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a href="/admin/add-product">
+                Add Product
+            </a>
+        </li>
+
+        <li>
+            <a href="/admin/products">
+                Manage Products
+            </a>
+        </li>
+
+        <li>
+            <a href="/admin/orders" class="active">
+                Orders
+            </a>
+        </li>
+
+        <li>
+            <a href="/admin/customers">
+                Customers
+            </a>
+        </li>
+
+        <li>
+            <a href="/admin/sales-report">
+                Sales Report
+            </a>
+        </li>
+
+        <li>
+            <a href="/admin/settings">
+                Settings
+            </a>
+        </li>
+
+        <li>
+            <a href="/admin/login">
+                Logout
+            </a>
+        </li>
+
+    </ul>
+
+</aside>
+
+
+<main class="dashboard-content">
+
+    <h1>Manage Orders</h1>
+
+    <!-- MOBILE SCROLL WRAPPER -->
+    <div class="admin-orders-table-wrapper">
+
+        <table class="admin-table">
+
+            <thead>
+
+            <tr>
+
+                <th>Order ID</th>
+
+                <th>Customer</th>
+
+                <th>Product</th>
+
+                <th>Quantity</th>
+
+                <th>Amount</th>
+
+                <th>Payment</th>
+
+                <th>Status</th>
+
+                <th>Action</th>
+
+            </tr>
+
+            </thead>
+
+
+            <tbody>
+
+            <tr th:each="order : ${orders}">
+
+                <td th:text="'#' + ${order.id}">
+                    #1
+                </td>
+
+                <td>
+
+                    <strong th:text="${order.customerName}">
+                        Customer Name
+                    </strong>
+
+                    <br>
+
+                    <small th:text="${order.email}">
+                        customer@email.com
+                    </small>
+
+                    <br>
+
+                    <small th:text="${order.phone}">
+                        9999999999
+                    </small>
+
+                </td>
+
+                <td th:text="${order.productName}">
+                    Product Name
+                </td>
+
+                <td th:text="${order.quantity}">
+                    1
+                </td>
+
+                <td>
+                    ₹<span th:text="${order.amount}">
+                        0.0
+                    </span>
+                </td>
+
+                <td th:text="${order.paymentMethod}">
+                    Cash on Delivery
+                </td>
+
+                <td>
+                    <span th:text="${order.status != null ? order.status : 'Unknown'}">
+                        Placed
+                    </span>
+                </td>
+
+                <td>
+
+                    <form th:action="@{/admin/orders/update}"
+                          method="post">
+
+                        <input type="hidden"
+                               name="id"
+                               th:value="${order.id}">
+
+                        <select name="status"
+                                class="order-status-select">
+
+                            <option value="Placed"
+                                    th:selected="${order.status == 'Placed'}">
+                                Placed
+                            </option>
+
+                            <option value="Pending"
+                                    th:selected="${order.status == 'Pending'}">
+                                Pending
+                            </option>
+
+                            <option value="Delivered"
+                                    th:selected="${order.status == 'Delivered'}">
+                                Delivered
+                            </option>
+
+                            <option value="Cancelled"
+                                    th:selected="${order.status == 'Cancelled'}">
+                                Cancelled
+                            </option>
+
+                        </select>
+
+                        <button type="submit"
+                                class="edit-btn">
+                            Update
+                        </button>
+
+                    </form>
+
+
+                    <a th:href="@{/admin/orders/view/{id}(id=${order.id})}">
+                        <button type="button">
+                            View
+                        </button>
+                    </a>
+
+                </td>
+
+            </tr>
+
+
+            <!-- Empty Orders State -->
+
+            <tr th:if="${orders == null or orders.isEmpty()}">
+
+                <td colspan="8"
+                    class="empty-message">
+
+                    No orders available.
+
+                </td>
+
+            </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</main>
+
+
+</body>
+
+</html>

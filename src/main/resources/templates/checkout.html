@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Checkout | SVS Vastra Collections</title>
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/navbar.css">
+<link rel="stylesheet" href="css/responsive.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+<div class="logo">SVS Vastra Collections</div>
+
+<ul class="nav-links">
+<li><a href="/">Home</a></li>
+<li><a href="/shop">Shop</a></li>
+<li><a href="/cart">Cart</a></li>
+<li><a href="/checkout" class="active">Checkout</a></li>
+<li><a href="/login">Login</a></li>
+</ul>
+
+</nav>
+
+<section class="checkout">
+
+<h1>Checkout</h1>
+
+    <form action="/place-order" method="post">
+
+        <input type="text" name="customerName" placeholder="Full Name" required>
+
+        <input type="email" name="email" placeholder="Email Address" required>
+
+        <input type="text" name="phone" placeholder="Phone Number" required>
+
+        <textarea name="address" placeholder="Delivery Address" rows="5" required></textarea>
+
+        <div class="payment-section">
+
+            <h2>Payment Method</h2>
+
+            <label class="payment-option">
+                <input type="radio"
+                       name="paymentMethod"
+                       value="Cash on Delivery"
+                       required>
+
+                <span>
+            <strong>Cash on Delivery</strong>
+            <small>Pay when your order is delivered.</small>
+        </span>
+            </label>
+
+
+            <label class="payment-option">
+                <input type="radio"
+                       name="paymentMethod"
+                       value="UPI">
+
+                <span>
+            <strong>UPI</strong>
+            <small>Pay using UPI apps.</small>
+        </span>
+            </label>
+
+
+            <label class="payment-option">
+                <input type="radio"
+                       name="paymentMethod"
+                       value="Credit/Debit Card">
+
+                <span>
+            <strong>Credit / Debit Card</strong>
+            <small>Pay securely using your card.</small>
+        </span>
+            </label>
+
+        </div>
+
+        <button type="submit">
+            Continue
+        </button>
+
+    </form>
+
+</section>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>

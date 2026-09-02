@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Settings | SVS Vastra Collections</title>
+
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<div class="admin-container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <h2>SVS Admin</h2>
+
+        <ul>
+            <li><a href="/admin/dashboard">Dashboard</a></li>
+            <li><a href="/admin/add-product">Add Product</a></li>
+            <li><a href="/admin/products">Manage Products</a></li>
+            <li><a href="/admin/orders">Orders</a></li>
+            <li><a href="/admin/customers">Customers</a></li>
+            <li><a href="/admin/sales-report">Sales Report</a></li>
+            <li><a href="/admin/settings" class="active">Settings</a></li>
+            <li><a href="/admin/login">Logout</a></li>
+        </ul>
+
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-content">
+
+        <h1>Store Settings</h1>
+
+        <form class="settings-form"
+              th:action="@{/admin/settings}"
+              th:object="${settings}"
+              method="post">
+
+            <label for="storeName">Store Name</label>
+            <input type="text"
+                   id="storeName"
+                   th:field="*{storeName}"
+                   required>
+
+            <label for="email">Business Email</label>
+            <input type="email"
+                   id="email"
+                   th:field="*{email}"
+                   required>
+
+            <label for="phone">Phone Number</label>
+            <input type="text"
+                   id="phone"
+                   th:field="*{phone}"
+                   required>
+
+            <label for="address">Store Address</label>
+            <textarea id="address"
+                      th:field="*{address}"
+                      rows="4"
+                      required></textarea>
+
+            <label for="logo">Upload Store Logo</label>
+            <input type="file" id="logo">
+
+            <label for="adminPassword">Change Admin Password</label>
+            <input type="password"
+                   id="adminPassword"
+                   th:field="*{adminPassword}"
+                   placeholder="Enter new password">
+
+            <button type="submit">
+                Save Settings
+            </button>
+
+        </form>
+
+    </main>
+
+</div>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>

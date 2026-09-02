@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Product Details | SVS Vastra Collections</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        SVS Vastra Collections
+    </div>
+
+    <ul class="nav-links">
+
+        <li><a href="/">Home</a></li>
+
+        <li><a href="/shop">Shop</a></li>
+
+        <li><a href="/product" class="active">Product</a></li>
+
+        <li><a href="/contact">Contact</a></li>
+
+        <li><a href="/login">Login</a></li>
+
+    </ul>
+
+</nav>
+
+<!-- PRODUCT -->
+
+<section class="product-details">
+
+    <div class="product-image">
+
+        <img th:src="${product.image}"
+             th:alt="${product.name}">
+
+    </div>
+
+    <div class="product-info">
+
+        <h1 th:text="${product.name}"></h1>
+
+        <h2>₹<span th:text="${product.price}"></span></h2>
+
+        <p>Beatiful Saree</p>
+
+        <h3>Available Colors</h3>
+
+        <p>Red • Green • Blue • Pink</p>
+
+        <form th:action="@{/cart/add}" method="post">
+            <input type="hidden" name="name" th:value="${product.name}">
+            <input type="hidden" name="price" th:value="${product.price}">
+            <input type="hidden" name="image" th:value="${product.image}">
+            <input type="hidden" name="quantity" value="1">
+
+            <button type="submit">Add to Cart</button>
+        </form>
+
+        <a href="/checkout">
+            <button class="buy-now">Buy Now</button>
+        </a>
+    </div>
+
+</section>
+
+<script src="/js/app.js"></script>
+
+</body>
+
+</html>

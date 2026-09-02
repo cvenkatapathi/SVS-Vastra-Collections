@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Shopping Cart | SVS Vastra Collections</title>
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/navbar.css">
+<link rel="stylesheet" href="css/responsive.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+<div class="logo">SVS Vastra Collections</div>
+
+<ul class="nav-links">
+
+<li><a href="/">Home</a></li>
+
+<li><a href="/shop">Shop</a></li>
+
+<li><a href="/cart" class="active">Cart</a></li>
+
+<li><a href="/contact">Contact</a></li>
+
+<li><a href="/login">Login</a></li>
+
+</ul>
+
+</nav>
+
+<section class="cart">
+
+    <h1>Your Shopping Cart</h1>
+
+    <div class="cart-table-wrapper">
+
+        <table>
+
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Action</th>
+            </tr>
+
+            <tr th:each="item : ${cartItems}">
+
+                <td th:text="${item.name}"></td>
+
+                <td>
+                    ₹<span th:text="${item.price}"></span>
+                </td>
+
+                <td th:text="${item.quantity}"></td>
+
+                <td>
+                    ₹<span th:text="${item.price * item.quantity}"></span>
+                </td>
+
+                <td>
+                    <a th:href="@{/cart/remove/{id}(id=${item.id})}">
+                        <button type="button">Remove</button>
+                    </a>
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td colspan="3">
+                    <strong>Grand Total</strong>
+                </td>
+
+                <td>
+                    <strong>
+                        ₹<span th:text="${grandTotal}"></span>
+                    </strong>
+                </td>
+
+                <td></td>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+    <div class="checkout-btn">
+
+        <a href="/checkout">
+            <button type="button">Proceed to Checkout</button>
+        </a>
+
+    </div>
+
+</section>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>

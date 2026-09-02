@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Login | SVS Vastra Collections</title>
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/navbar.css">
+<link rel="stylesheet" href="css/responsive.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<!--  NAVBAR  -->
+
+<nav class="navbar">
+
+<div class="logo">SVS Vastra Collections</div>
+
+<ul class="nav-links">
+
+<li><a href="/">Home</a></li>
+<li><a href="/shop">Shop</a></li>
+<li><a href="/cart">Cart</a></li>
+<li><a href="/login" class="active">Login</a></li>
+
+</ul>
+
+</nav>
+
+<!--  LOGIN  -->
+
+<section class="login-page">
+
+<h1>Welcome Back</h1>
+
+<p>Please login to your account.</p>
+
+    <form th:action="@{/login}" method="post">
+
+        <input type="email" name="email" placeholder="Email Address" required>
+
+        <input type="password" name="password" placeholder="Password" required>
+
+<button type="submit">Login</button>
+
+<p class="login-links">
+
+<a href="/forgot-password">Forgot Password?</a>
+
+</p>
+
+<p class="login-links">
+
+Don't have an account?
+
+<a href="/signup">Sign Up</a>
+
+</p>
+
+</form>
+
+</section>
+
+<script src="js/app.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | SVS Vastra Collections</title>
+
+    <link rel="stylesheet" href="/css/admin.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="/css/navbar.css">
+
+    <link rel="stylesheet" href="/css/responsive.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body>
+
+<div class="admin-container">
+
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <h2>SVS Admin</h2>
+
+        <ul>
+
+            <li>
+                <a href="/admin/dashboard" class="active">
+                    <i class="fas fa-home"></i>
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="/admin/add-product">
+                    <i class="fas fa-plus-circle"></i>
+                    Add Product
+                </a>
+            </li>
+
+            <li>
+                <a href="/admin/products">
+                    <i class="fas fa-box"></i>
+                    Manage Products
+                </a>
+            </li>
+
+            <li>
+                <a href="/admin/orders">
+                    <i class="fas fa-shopping-cart"></i>
+                    Orders
+                </a>
+            </li>
+
+            <li>
+                <a href="/admin/customers">
+                    <i class="fas fa-users"></i>
+                    Customers
+                </a>
+            </li>
+
+            <li>
+                <a href="/admin/sales-report">
+                    <i class="fas fa-chart-line"></i>
+                    Sales Report
+                </a>
+            </li>
+
+            <li>
+                <a href="/admin/settings">
+                    <i class="fas fa-cog"></i>
+                    Settings
+                </a>
+            </li>
+
+            <li>
+                <a href="/admin/login">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </a>
+            </li>
+
+        </ul>
+
+    </aside>
+
+
+    <!-- MAIN DASHBOARD -->
+
+    <main class="dashboard-content">
+
+        <h1>Dashboard</h1>
+
+
+        <!-- DASHBOARD CARDS -->
+
+        <div class="dashboard-cards">
+
+            <div class="card">
+
+                <h2 th:text="${productCount}">
+                    0
+                </h2>
+
+                <p>
+                    Products
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h2 th:text="${orderCount}">
+                    0
+                </h2>
+
+                <p>
+                    Orders
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h2 th:text="${customerCount}">
+                    0
+                </h2>
+
+                <p>
+                    Customers
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h2>
+                    ₹<span th:text="${totalRevenue}">
+                        0
+                    </span>
+                </h2>
+
+                <p>
+                    Total Revenue
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ORDER STATUS -->
+
+        <h2>
+            Order Status
+        </h2>
+
+        <div class="dashboard-cards">
+
+            <div class="card">
+
+                <h2 th:text="${pendingOrders}">
+                    0
+                </h2>
+
+                <p>
+                    Pending Orders
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h2 th:text="${placedOrders}">
+                    0
+                </h2>
+
+                <p>
+                    Placed Orders
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h2 th:text="${deliveredOrders}">
+                    0
+                </h2>
+
+                <p>
+                    Delivered Orders
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h2 th:text="${cancelledOrders}">
+                    0
+                </h2>
+
+                <p>
+                    Cancelled Orders
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- QUICK ACTIONS -->
+
+        <h2>
+            Quick Actions
+        </h2>
+
+        <div class="quick-actions">
+
+            <a href="/admin/orders"
+               class="quick-action">
+
+                <i class="fas fa-shopping-cart"></i>
+
+                <span>
+                    Manage Orders
+                </span>
+
+            </a>
+
+
+            <a href="/admin/products"
+               class="quick-action">
+
+                <i class="fas fa-box"></i>
+
+                <span>
+                    Manage Products
+                </span>
+
+            </a>
+
+
+            <a href="/admin/customers"
+               class="quick-action">
+
+                <i class="fas fa-users"></i>
+
+                <span>
+                    View Customers
+                </span>
+
+            </a>
+
+
+            <a href="/admin/sales-report"
+               class="quick-action">
+
+                <i class="fas fa-chart-line"></i>
+
+                <span>
+                    Sales Report
+                </span>
+
+            </a>
+
+        </div>
+
+
+        <!-- RECENT ORDERS -->
+
+        <h2>
+            Recent Orders
+        </h2>
+
+
+        <!-- IMPORTANT: This class matches responsive.css -->
+        <div class="dashboard-table-wrapper">
+
+            <table class="admin-table">
+
+                <thead>
+
+                <tr>
+
+                    <th>
+                        Order ID
+                    </th>
+
+                    <th>
+                        Customer
+                    </th>
+
+                    <th>
+                        Amount
+                    </th>
+
+                    <th>
+                        Status
+                    </th>
+
+                    <th>
+                        Action
+                    </th>
+
+                </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                <tr th:each="order : ${recentOrders}">
+
+                    <!-- Order ID -->
+
+                    <td>
+
+                        <a th:href="@{/admin/orders/view/{id}(id=${order.id})}"
+                           class="order-id-link"
+                           th:text="'#' + ${order.id}">
+
+                            #1
+
+                        </a>
+
+                    </td>
+
+
+                    <!-- Customer -->
+
+                    <td th:text="${order.customerName}">
+
+                        Customer
+
+                    </td>
+
+
+                    <!-- Amount -->
+
+                    <td>
+
+                        ₹<span th:text="${order.amount}">
+                            0.0
+                        </span>
+
+                    </td>
+
+
+                    <!-- Status -->
+
+                    <td>
+
+                        <span class="order-status"
+                              th:classappend="${#strings.equalsIgnoreCase(order.status, 'Delivered')} ? ' status-delivered' :
+                                              (${#strings.equalsIgnoreCase(order.status, 'Pending')} ? ' status-pending' :
+                                              (${#strings.equalsIgnoreCase(order.status, 'Placed')} ? ' status-placed' :
+                                              (${#strings.equalsIgnoreCase(order.status, 'Cancelled')} ? ' status-cancelled' :
+                                              ' status-default')))"
+                              th:text="${order.status != null and !#strings.isEmpty(order.status) ? order.status : 'Unknown'}">
+
+                            Status
+
+                        </span>
+
+                    </td>
+
+
+                    <!-- Action -->
+
+                    <td>
+
+                        <a th:href="@{/admin/orders/view/{id}(id=${order.id})}"
+                           class="view-order-btn">
+
+                            View
+
+                        </a>
+
+                    </td>
+
+                </tr>
+
+
+                <!-- Empty State -->
+
+                <tr th:if="${recentOrders == null or recentOrders.isEmpty()}">
+
+                    <td colspan="5"
+                        class="empty-message">
+
+                        No orders available
+
+                    </td>
+
+                </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script src="/js/app.js"></script>
+
+</body>
+
+</html>

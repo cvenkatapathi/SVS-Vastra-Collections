@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Add Product | SVS Vastra Collections</title>
+
+    <link rel="stylesheet" href="/css/admin.css">
+
+<link rel="stylesheet"
+      th:href="@{/css/style.css}">
+<link rel="stylesheet"
+      th:href="@{/css/navbar.css}">
+<link rel="stylesheet"
+      th:href="@{/css/responsive.css}">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="admin-container">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <h2>SVS Admin</h2>
+
+        <ul>
+
+            <li><a href="/admin/dashboard">Dashboard</a></li>
+
+            <li><a href="/admin/add-product" class="active">Add Product</a></li>
+
+            <li><a href="/admin/products">Manage Products</a></li>
+
+            <li><a href="/admin/orders">Orders</a></li>
+
+            <li><a href="/admin/customers">Customers</a></li>
+
+            <li><a href="/admin/sales-report">Sales Report</a></li>
+
+            <li><a href="/admin/settings">Settings</a></li>
+
+            <li><a href="/admin/login">Logout</a></li>
+
+        </ul>
+
+    </aside>
+
+    <!-- Main Content -->
+
+    <main class="dashboard-content">
+
+        <h1>Add New Product</h1>
+
+        <form class="product-form"
+              th:action="@{/admin/save}"
+              th:object="${product}"
+              method="post"
+              enctype="multipart/form-data">
+
+            <input type="hidden" th:field="*{id}">
+
+            <input type="text"
+                   th:field="*{name}"
+                   placeholder="Product Name"
+                   required>
+
+            <input type="number"
+                   th:field="*{price}"
+                   placeholder="Price"
+                   step="0.01"
+                   required>
+
+            <input type="text"
+                   placeholder="Available Colors">
+
+            <textarea placeholder="Product Description"
+                      rows="6"></textarea>
+
+            <label>Upload Product Image</label>
+
+            <input type="file"
+                   name="imageFile"
+                   accept="image/*"
+                   required>
+
+            <button type="submit">
+                Add Product
+            </button>
+
+        </form>
+
+    </main>
+
+</div>
+
+<script th:src="@{/js/app.js}"></script>
+
+</body>
+</html>

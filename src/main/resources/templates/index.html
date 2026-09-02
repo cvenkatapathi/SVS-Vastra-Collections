@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SVS Vastra Collections | Wholesale & Retail</title>
+
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+      <!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="logo">
+
+        <img src="images/logo/logo.png" alt="SVS Logo">
+
+        <div>
+
+            <h2>SVS VASTRA</h2>
+
+            <span>Collections</span>
+
+        </div>
+
+    </div>
+
+    <ul class="nav-links">
+
+        <li><a href="/">Home</a></li>
+
+        <li><a href="/shop">Shop</a></li>
+
+        <li><a href="/about">About</a></li>
+
+        <li><a href="/contact">Contact</a></li>
+
+        <li><a href="/cart">Cart</a></li>
+
+
+    </ul>
+
+    <div class="icons">
+
+        <a href="/shop">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </a>
+
+        <a href="/wishlist">
+            <i class="fa-regular fa-heart"></i>
+        </a>
+
+        <a href="/cart">
+            <i class="fa-solid fa-cart-shopping"></i>
+        </a>
+
+        <div th:if="${session.loggedInUser == null}">
+            <a href="/login">
+                <button class="login-btn">Login</button>
+            </a>
+        </div>
+
+        <div th:if="${session.loggedInUser != null}">
+            <a href="/logout">
+                <button class="login-btn">Logout</button>
+            </a>
+        </div>
+    </div>
+
+</nav>
+
+<!-- HERO BANNER -->
+
+<section class="hero">
+
+    <div class="slider">
+
+        <!-- Banner 1 -->
+        <div class="slide active">
+
+            <img src="images/banners/banner1.jpg"
+                 alt="SVS Vastra Collections Banner 1">
+
+            <div class="hero-content">
+
+                <h1>
+                    Elegant Sarees for Every Celebration
+                </h1>
+
+                <p>
+                    Discover timeless silk, cotton and bridal
+                    collections for every special moment.
+                </p>
+
+                <a href="/shop" class="hero-btn">
+                    Shop Collection
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Banner 2 -->
+        <div class="slide">
+
+            <img src="images/banners/banner2.jpg"
+                 alt="SVS Vastra Collections Banner 2">
+
+            <div class="hero-content">
+
+                <h1>
+                    Grace That Speaks for Itself
+                </h1>
+
+                <p>
+                    Explore exquisite sarees that bring
+                    tradition and elegance together.
+                </p>
+
+                <a href="/shop" class="hero-btn">
+                    Explore Sarees
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Banner 3 -->
+        <div class="slide">
+
+            <img src="images/banners/banner3.jpg"
+                 alt="SVS Vastra Collections Banner 3">
+
+            <div class="hero-content">
+
+                <h1>
+                    Celebrate in Timeless Style
+                </h1>
+
+                <p>
+                    Find the perfect saree for festivals,
+                    weddings and every grand occasion.
+                </p>
+
+                <a href="/shop" class="hero-btn">
+                    View Collection
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- CATEGORIES -->
+
+<section class="categories">
+
+    <div class="section-title">
+
+        <h2>Shop by Categories</h2>
+
+        <p>Discover beautiful sarees for every occasion.</p>
+
+    </div>
+
+    <div class="category-container">
+
+        <div class="category-card">
+            <img src="images/sarees/silk.jpg" alt="Silk Sarees">
+            <h3>Silk Sarees</h3>
+        </div>
+
+        <div class="category-card">
+            <img src="images/sarees/cotton.jpg" alt="Cotton Sarees">
+            <h3>Cotton Sarees</h3>
+        </div>
+
+        <div class="category-card">
+            <img src="images/sarees/bridal.jpg" alt="Bridal Sarees">
+            <h3>Bridal Sarees</h3>
+        </div>
+
+        <div class="category-card">
+            <img src="images/sarees/designer.jpg" alt="Designer Sarees">
+            <h3>Designer Sarees</h3>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- NEW ARRIVALS -->
+
+<section class="new-arrivals">
+
+    <div class="section-title">
+
+        <h2>New Arrivals</h2>
+
+        <p>Fresh styles just arrived at SVS Vastra Collections.</p>
+
+    </div>
+
+    <div class="products">
+
+        <div class="product-card">
+
+            <img src="images/sarees/product1.jpg">
+
+            <h3>Premium Silk Saree</h3>
+
+            <p>₹1,999</p>
+
+            <button>Add to Cart</button>
+
+        </div>
+
+        <div class="product-card">
+
+            <img src="images/sarees/product2.jpg">
+
+            <h3>Designer Saree</h3>
+
+            <p>₹2,499</p>
+
+            <button>Add to Cart</button>
+
+        </div>
+
+        <div class="product-card">
+
+            <img src="images/sarees/product3.jpg">
+
+            <h3>Cotton Saree</h3>
+
+            <p>₹999</p>
+
+            <button>Add to Cart</button>
+
+        </div>
+
+        <div class="product-card">
+
+            <img src="images/sarees/product4.jpg">
+
+            <h3>Wedding Saree</h3>
+
+            <p>₹3,999</p>
+
+            <button>Add to Cart</button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FESTIVAL OFFER -->
+
+<section class="offer">
+
+    <div class="offer-content">
+
+        <h2>🎉 Festival Sale</h2>
+
+        <h1>UP TO 50% OFF</h1>
+
+        <p>
+            Celebrate every occasion with beautiful sarees at amazing prices.
+        </p>
+
+        <button>Explore Offers</button>
+
+    </div>
+
+</section>
+
+<!-- BEST SELLERS -->
+
+<section class="best-sellers">
+
+    <div class="section-title">
+
+        <h2>Best Sellers</h2>
+
+        <p>Our customers' favorite sarees.</p>
+
+    </div>
+
+    <div class="products">
+
+        <div class="product-card">
+
+            <img src="images/sarees/best1.jpg" alt="Best Seller 1">
+
+            <h3>Royal Kanchipuram Silk</h3>
+
+            <p>₹4,999</p>
+
+            <a href="/shop" class="hero-btn">View Details</a>
+
+        </div>
+
+        <div class="product-card">
+
+            <img src="images/sarees/best2.jpg" alt="Best Seller 2">
+
+            <h3>Wedding Collection</h3>
+
+            <p>₹3,499</p>
+
+            <a href="/shop" class="hero-btn">View Details</a>
+
+        </div>
+
+        <div class="product-card">
+
+            <img src="images/sarees/best3.jpg" alt="Best Seller 3">
+
+            <h3>Designer Party Wear</h3>
+
+            <p>₹2,999</p>
+
+            <a href="/shop" class="hero-btn">View Details</a>
+
+        </div>
+
+        <div class="product-card">
+
+            <img src="images/sarees/best4.jpg" alt="Best Seller 4">
+
+            <h3>Traditional Cotton</h3>
+
+            <p>₹1,499</p>
+
+            <button>View Details</button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CUSTOMER REVIEWS -->
+
+<section class="reviews">
+
+    <div class="section-title">
+
+        <h2>What Our Customers Say</h2>
+
+        <p>Trusted by thousands of happy customers.</p>
+
+    </div>
+
+    <div class="review-container">
+
+        <div class="review-card">
+
+            <div class="stars">
+                ⭐⭐⭐⭐⭐
+            </div>
+
+            <p>
+                Beautiful collection with premium quality.
+                The saree was exactly as shown.
+            </p>
+
+            <h3>Priya Sharma</h3>
+
+        </div>
+
+        <div class="review-card">
+
+            <div class="stars">
+                ⭐⭐⭐⭐⭐
+            </div>
+
+            <p>
+                Excellent customer service and fast delivery.
+            </p>
+
+            <h3>Anitha Reddy</h3>
+
+        </div>
+
+        <div class="review-card">
+
+            <div class="stars">
+                ⭐⭐⭐⭐⭐
+            </div>
+
+            <p>
+                Amazing bridal collection.
+                Highly recommended.
+            </p>
+
+            <h3>Sowmya</h3>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CONTACT SECTION -->
+
+<section class="contact">
+
+    <div class="section-title">
+        <h2>Contact Us</h2>
+        <p>We'd love to hear from you.</p>
+    </div>
+
+    <div class="contact-container">
+
+        <div class="contact-info">
+
+            <h3>SVS Vastra Collections</h3>
+
+            <p>📍 Boduppal, Balaji Hills, Hyderabad</p>
+
+            <p>📞 +91 9989222526, 8374304947</p>
+
+            <p>✉️ svsvastracollections@gmail.com</p>
+
+            <p>🕒 Mon - Sun : 9:00 AM - 9:00 PM</p>
+
+        </div>
+
+        <div class="contact-form">
+
+            <form>
+
+                <input type="text" placeholder="Your Name" required>
+
+                <input type="email" placeholder="Your Email" required>
+
+                <input type="text" placeholder="Subject">
+
+                <textarea rows="6" placeholder="Your Message"></textarea>
+
+                <button type="submit">Send Message</button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-box">
+
+            <h2>SVS Vastra Collections</h2>
+
+            <p>
+                Premium Sarees for every occasion.
+                Wholesale & Retail with trusted quality.
+            </p>
+
+        </div>
+
+        <div class="footer-box">
+
+            <h3>Quick Links</h3>
+
+            <ul>
+
+                <li><a href="/">Home</a></li>
+
+                <li><a href="/shop">Shop</a></li>
+
+                <li><a href="/about">About</a></li>
+
+                <li><a href="/contact">Contact</a></li>
+
+            </ul>
+
+        </div>
+
+        <div class="footer-box">
+
+            <h3>Contact</h3>
+
+            <p>📍 Boduppal, Balaji Hills, Hyderabad</p>
+
+            <p>📞 +91 9989222526, 8374304947</p>
+
+            <p>✉️ svsvastracollections@gmail.com</p>
+
+        </div>
+
+        <div class="footer-box">
+
+            <h3>Follow Us</h3>
+
+            <div class="social-icons">
+
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+
+                <a href="#"><i class="fab fa-instagram"></i></a>
+
+                <a href="#"><i class="fab fa-youtube"></i></a>
+
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 SVS Vastra Collections. All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+<!--  WHATSAPP BUTTON  -->
+
+<a href="https://wa.me/9989222526"
+   class="whatsapp"
+   target="_blank">
+
+    <i class="fab fa-whatsapp"></i>
+
+</a>
+
+<!-- SCROLL TO TOP -->
+
+<button id="topBtn" title="Go to Top">
+
+    <i class="fas fa-arrow-up"></i>
+
+</button>
+
+<script src="js/app.js"></script>
+ 
+
+</body>
+</html>
+

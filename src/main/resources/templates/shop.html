@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Shop | SVS Vastra Collections</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        SVS Vastra Collections
+    </div>
+
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="/">
+                Home
+            </a>
+        </li>
+
+        <li>
+            <a href="/shop"
+               class="active">
+                Shop
+            </a>
+        </li>
+
+        <li>
+            <a href="/wishlist">
+                Wishlist
+            </a>
+        </li>
+
+        <li>
+            <a href="/cart">
+                Cart
+            </a>
+        </li>
+
+        <li>
+            <a href="/about">
+                About
+            </a>
+        </li>
+
+        <li>
+            <a href="/contact">
+                Contact
+            </a>
+        </li>
+
+        <li>
+            <a href="/orders">
+                My Orders
+            </a>
+        </li>
+
+        <li>
+            <a href="/login">
+                Login
+            </a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- SHOP HERO -->
+
+<section class="shop-hero">
+
+    <h1>
+        Our Saree Collection
+    </h1>
+
+    <p>
+        Choose the perfect saree for every occasion.
+    </p>
+
+</section>
+
+
+<!-- SHOP PRODUCTS -->
+
+<section class="shop-products">
+
+    <div class="product-card"
+         th:each="product : ${products}"
+         th:attr="
+            data-product-id=${product.id},
+            data-product-name=${product.name},
+            data-product-price=${product.price},
+            data-product-image=${product.image}">
+
+        <!-- Wishlist button -->
+
+        <button type="button"
+                class="wishlist-toggle"
+                aria-label="Add to wishlist"
+                title="Add to wishlist">
+
+            <i class="fa-regular fa-heart"></i>
+
+        </button>
+
+
+        <!-- Product image -->
+
+        <img th:src="@{${product.image}}"
+             th:alt="${product.name}">
+
+
+        <!-- Product name -->
+
+        <h3 th:text="${product.name}">
+            Product Name
+        </h3>
+
+
+        <!-- Product price -->
+
+        <p>
+            ₹<span th:text="${product.price}">
+                0
+            </span>
+        </p>
+
+
+        <!-- Product details -->
+
+        <a th:href="@{/product/{id}(id=${product.id})}">
+            <button type="button">
+                View Details
+            </button>
+        </a>
+
+    </div>
+
+</section>
+
+
+<script src="/js/app.js"></script>
+
+</body>
+
+</html>

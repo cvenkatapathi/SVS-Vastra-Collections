@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Customer Details | SVS Admin</title>
+
+    <link rel="stylesheet" href="/css/admin.css">
+
+</head>
+
+
+<body>
+
+<div class="admin-container">
+
+
+    <!-- SIDEBAR  -->
+
+    <aside class="sidebar">
+
+        <h2>SVS Admin</h2>
+
+        <ul>
+
+            <li>
+                <a href="/admin/dashboard">
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="/admin/add-product">
+                    Add Product
+                </a>
+            </li>
+
+            <li>
+                <a href="/admin/products">
+                    Manage Products
+                </a>
+            </li>
+
+            <li>
+                <a href="/admin/orders">
+                    Orders
+                </a>
+            </li>
+
+            <li>
+                <a href="/admin/customers" class="active">
+                    Customers
+                </a>
+            </li>
+
+            <li>
+                <a href="/admin/sales-report">
+                    Sales Report
+                </a>
+            </li>
+
+            <li>
+                <a href="/admin/settings">
+                    Settings
+                </a>
+            </li>
+
+            <li>
+                <a href="/admin/logout">
+                    Logout
+                </a>
+            </li>
+
+        </ul>
+
+    </aside>
+
+
+    <!--  MAIN CONTENT  -->
+
+    <main class="dashboard-content customer-details-page">
+
+
+        <h1>Customer Details</h1>
+
+        <p class="page-description">
+            View customer information and account details
+        </p>
+
+
+        <!--   CUSTOMER PROFILE  -->
+
+        <div class="customer-details-card">
+
+            <div class="customer-card-header">
+
+                <div>
+
+                    <h2>Customer Information</h2>
+
+                    <p>
+                        Registered customer profile
+                    </p>
+
+                </div>
+
+                <span class="customer-status customer-active">
+                    Active
+                </span>
+
+            </div>
+
+
+            <div class="customer-info-grid">
+
+
+                <!-- CUSTOMER ID -->
+
+                <div class="customer-info-item">
+
+                    <span class="customer-info-label">
+                        Customer ID
+                    </span>
+
+                    <strong th:text="'#' + ${user.id}">
+                        #1
+                    </strong>
+
+                </div>
+
+
+                <!-- CUSTOMER NAME -->
+
+                <div class="customer-info-item">
+
+                    <span class="customer-info-label">
+                        Customer Name
+                    </span>
+
+                    <strong th:text="${user.fullName}">
+                        Customer Name
+                    </strong>
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="customer-info-item">
+
+                    <span class="customer-info-label">
+                        Email Address
+                    </span>
+
+                    <span th:text="${user.email}">
+                        customer@gmail.com
+                    </span>
+
+                </div>
+
+
+                <!-- PHONE -->
+
+                <div class="customer-info-item">
+
+                    <span class="customer-info-label">
+                        Phone Number
+                    </span>
+
+                    <span th:text="${user.mobile}">
+                        9876543210
+                    </span>
+
+                </div>
+
+
+                <!-- ACCOUNT STATUS -->
+
+                <div class="customer-info-item">
+
+                    <span class="customer-info-label">
+                        Account Status
+                    </span>
+
+                    <span class="customer-status customer-active">
+                        Active
+                    </span>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <!--   ORDER SUMMARY   -->
+
+        <div class="customer-details-card">
+
+            <h2>Order Summary</h2>
+
+            <p class="section-description">
+                Customer order statistics
+            </p>
+
+
+            <div class="customer-stats-grid">
+
+
+                <!-- TOTAL ORDERS -->
+
+                <div class="customer-stat-card">
+
+                    <h3 th:text="${totalOrders}">
+                        0
+                    </h3>
+
+                    <span>
+                        Total Orders
+                    </span>
+
+                </div>
+
+
+                <!-- DELIVERED ORDERS -->
+
+                <div class="customer-stat-card">
+
+                    <h3 th:text="${deliveredOrders}">
+                        0
+                    </h3>
+
+                    <span>
+                        Delivered Orders
+                    </span>
+
+                </div>
+
+
+                <!-- CANCELLED ORDERS -->
+
+                <div class="customer-stat-card">
+
+                    <h3 th:text="${cancelledOrders}">
+                        0
+                    </h3>
+
+                    <span>
+                        Cancelled Orders
+                    </span>
+
+                </div>
+
+
+                <!-- TOTAL SPENT -->
+
+                <div class="customer-stat-card">
+
+                    <h3 th:text="'₹' + ${totalSpent}">
+                        ₹0
+                    </h3>
+
+                    <span>
+                        Total Spent
+                    </span>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <!--  BACK BUTTON   -->
+
+        <a
+                href="/admin/customers"
+                class="back-customers-btn">
+
+            ← Back to Customers
+
+        </a>
+
+
+    </main>
+
+</div>
+
+</body>
+
+</html>

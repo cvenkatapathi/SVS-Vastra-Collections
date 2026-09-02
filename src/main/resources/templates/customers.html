@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Customers | SVS Admin</title>
+
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+
+<body>
+
+<div class="admin-container">
+
+    <!--   SIDEBAR  -->
+
+    <aside class="sidebar">
+
+        <h2>SVS Admin</h2>
+
+        <ul>
+
+            <li>
+                <a href="/admin/dashboard">
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="/admin/add-product">
+                    Add Product
+                </a>
+            </li>
+
+            <li>
+                <a href="/admin/products">
+                    Manage Products
+                </a>
+            </li>
+
+            <li>
+                <a href="/admin/orders">
+                    Orders
+                </a>
+            </li>
+
+            <li>
+                <a href="/admin/customers" class="active">
+                    Customers
+                </a>
+            </li>
+
+            <li>
+                <a href="/admin/sales-report">
+                    Sales Report
+                </a>
+            </li>
+
+            <li>
+                <a href="/admin/settings">
+                    Settings
+                </a>
+            </li>
+
+            <li>
+                <a href="/admin/logout">
+                    Logout
+                </a>
+            </li>
+
+        </ul>
+
+    </aside>
+
+
+    <!--  MAIN CONTENT   -->
+
+    <main class="dashboard-content">
+
+        <h1>Registered Customers</h1>
+
+        <p class="page-description">
+            View and manage registered customers
+        </p>
+
+
+        <!--  CUSTOMER TABLE   -->
+
+        <div class="table-container">
+
+            <table class="admin-table">
+
+                <thead>
+
+                <tr>
+
+                    <th>Customer ID</th>
+
+                    <th>Customer</th>
+
+                    <th>Email</th>
+
+                    <th>Phone</th>
+
+                    <th>Status</th>
+
+                    <th>Action</th>
+
+                </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                <!-- CUSTOMER ROWS -->
+
+                <tr th:each="user : ${users}">
+
+                    <!-- ID -->
+
+                    <td>
+                        <strong th:text="'#' + ${user.id}">
+                            #1
+                        </strong>
+                    </td>
+
+
+                    <!-- CUSTOMER NAME -->
+
+                    <td>
+
+                        <strong th:text="${user.fullName}">
+                            Customer Name
+                        </strong>
+
+                    </td>
+
+
+                    <!-- EMAIL -->
+
+                    <td th:text="${user.email}">
+                        customer@gmail.com
+                    </td>
+
+
+                    <!-- PHONE -->
+
+                    <td th:text="${user.mobile}">
+                        9876543210
+                    </td>
+
+
+                    <!-- STATUS -->
+
+                    <td>
+
+                        <span class="customer-status customer-active">
+                            Active
+                        </span>
+
+                    </td>
+
+
+                    <!-- ACTION -->
+
+                    <td>
+
+                        <a
+                                th:href="@{/admin/customers/view/{id}(id=${user.id})}"
+                                class="view-btn">
+                            View
+                        </a>
+
+                    </td>
+
+                </tr>
+
+
+                <!-- EMPTY STATE -->
+
+                <tr th:if="${#lists.isEmpty(users)}">
+
+                    <td
+                            colspan="6"
+                            class="empty-message">
+
+                        No customers registered yet.
+
+                    </td>
+
+                </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+
+</html>

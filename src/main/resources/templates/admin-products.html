@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Products | SVS Vastra Collections</title>
+
+
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/responsive.css}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>SVS Vastra Collections - Admin</h1>
+
+    <br>
+
+    <a th:href="@{/admin/add-product}">Add New Product</a>
+
+    <br><br>
+
+    <table border="1" width="100%" cellpadding="10">
+
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        <tr th:each="product : ${products}">
+
+            <td th:text="${product.id}"></td>
+
+            <td>
+                <img th:src="@{${product.image}}"
+                     alt="Product Image"
+                     style="width:120px;height:120px;object-fit:cover;border-radius:8px;">
+            </td>
+
+            <td th:text="${product.name}"></td>
+
+            <td th:text="${product.price}"></td>
+
+            <td>
+                <a th:href="@{/admin/edit/{id}(id=${product.id})}">
+                    <button type="button">Edit</button>
+                </a>
+
+                <a th:href="@{/admin/delete/{id}(id=${product.id})}"
+                   onclick="return confirm('Are you sure?')">
+                    <button type="button">Delete</button>
+                </a>
+            </td>
+
+        </tr>
+
+
+        <!-- Empty Products -->
+        <tr th:if="${products == null or products.isEmpty()}">
+
+            <td colspan="5" class="empty-message">
+                No products available.
+            </td>
+
+        </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<script th:src="@{/js/app.js}"></script>
+
+</body>
+</html>

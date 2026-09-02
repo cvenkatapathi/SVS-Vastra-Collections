@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>My Orders | SVS Vastra Collections</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body>
+
+<nav class="navbar">
+
+    <div class="logo">
+        SVS Vastra Collections
+    </div>
+
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="/">
+                Home
+            </a>
+        </li>
+
+        <li>
+            <a href="/shop">
+                Shop
+            </a>
+        </li>
+
+        <li>
+            <a href="/wishlist">
+                Wishlist
+            </a>
+        </li>
+
+        <li>
+            <a href="/orders"
+               class="active">
+                My Orders
+            </a>
+        </li>
+
+        <li>
+            <a href="/login">
+                Login
+            </a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<section class="orders">
+
+    <h1>
+        My Orders
+    </h1>
+
+
+    <!-- ORDERS TABLE -->
+
+    <div class="orders-table-wrapper"
+         th:if="${orders != null and !orders.isEmpty()}">
+
+        <table>
+
+            <thead>
+
+            <tr>
+
+                <th>
+                    Order ID
+                </th>
+
+                <th>
+                    Product
+                </th>
+
+                <th>
+                    Amount
+                </th>
+
+                <th>
+                    Status
+                </th>
+
+            </tr>
+
+            </thead>
+
+
+            <tbody>
+
+            <tr th:each="order : ${orders}">
+
+                <!-- Order ID -->
+
+                <td th:text="${order.id}">
+                    1
+                </td>
+
+
+                <!-- Product -->
+
+                <td th:text="${order.productName}">
+                    Product Name
+                </td>
+
+
+                <!-- Amount -->
+
+                <td>
+                    ₹<span th:text="${order.amount}">
+                        0.0
+                    </span>
+                </td>
+
+
+                <!-- Status -->
+
+                <td th:text="${order.status != null ? order.status : 'Unknown'}">
+                    Placed
+                </td>
+
+            </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <!-- EMPTY ORDERS STATE -->
+
+    <div class="empty-orders-message"
+         th:if="${orders == null or orders.isEmpty()}">
+
+        <h2>
+            No Orders Yet
+        </h2>
+
+        <p>
+            You haven't placed any orders yet.
+        </p>
+
+        <a href="/shop">
+            Continue Shopping
+        </a>
+
+    </div>
+
+</section>
+
+
+<script src="/js/app.js"></script>
+
+</body>
+
+</html>

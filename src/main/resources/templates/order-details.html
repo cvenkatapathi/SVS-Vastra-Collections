@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Order Details | SVS Vastra Collections</title>
+
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+
+<body>
+
+<div class="admin-container">
+
+
+    <aside class="sidebar">
+
+        <h2>SVS Admin</h2>
+
+        <ul>
+            <li>
+                <a href="/admin/dashboard">Dashboard</a>
+            </li>
+
+            <li>
+                <a href="/admin/add-product">Add Product</a>
+            </li>
+
+            <li>
+                <a href="/admin/products">Manage Products</a>
+            </li>
+
+            <li>
+                <a href="/admin/orders" class="active">Orders</a>
+            </li>
+
+            <li>
+                <a href="/admin/customers">Customers</a>
+            </li>
+
+            <li>
+                <a href="/admin/sales-report">Sales Report</a>
+            </li>
+
+            <li>
+                <a href="/admin/settings">Settings</a>
+            </li>
+
+            <li>
+                <a href="/admin/login">Logout</a>
+            </li>
+        </ul>
+
+    </aside>
+
+
+
+    <main class="dashboard-content order-details-page">
+
+        <h1>Order Details</h1>
+
+
+
+        <div class="order-card">
+
+            <h2>Customer Information</h2>
+
+            <div class="order-info">
+
+                <div class="info-row">
+                    <span>Order ID</span>
+                    <strong th:text="'#' + ${order.id}"></strong>
+                </div>
+
+                <div class="info-row">
+                    <span>Customer Name</span>
+                    <strong th:text="${order.customerName}"></strong>
+                </div>
+
+                <div class="info-row">
+                    <span>Email</span>
+                    <span th:text="${order.email}"></span>
+                </div>
+
+                <div class="info-row">
+                    <span>Phone</span>
+                    <span th:text="${order.phone}"></span>
+                </div>
+
+                <div class="info-row">
+                    <span>Address</span>
+                    <span th:text="${order.address}"></span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="order-card">
+
+            <h2>Order Information</h2>
+
+            <div class="order-info">
+
+                <div class="info-row">
+                    <span>Product</span>
+                    <strong th:text="${order.productName}"></strong>
+                </div>
+
+                <div class="info-row">
+                    <span>Quantity</span>
+                    <span th:text="${order.quantity}"></span>
+                </div>
+
+                <div class="info-row">
+                    <span>Amount</span>
+                    <strong>
+                        ₹<span th:text="${order.amount}"></span>
+                    </strong>
+                </div>
+
+                <div class="info-row">
+                    <span>Payment Method</span>
+                    <span th:text="${order.paymentMethod}"></span>
+                </div>
+
+                <div class="info-row">
+                    <span>Status</span>
+                    <span class="status-badge"
+                          th:classappend="${order.status == 'Delivered'} ? ' status-delivered' :
+                      (${order.status == 'Pending'} ? ' status-pending' :
+                      (${order.status == 'Cancelled'} ? ' status-cancelled' :
+                      ' status-placed'))"
+                          th:text="${order.status}">Status
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <a href="/admin/orders" class="back-orders-btn">
+            ← Back to Orders
+        </a>
+
+    </main>
+
+</div>
+
+</body>
+</html>
