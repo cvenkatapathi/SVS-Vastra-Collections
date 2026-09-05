@@ -74,7 +74,7 @@ public class HomeController {
 
         if (user != null) {
             session.setAttribute("loggedInUser", user);
-            return "redirect:/";
+            return "redirect:/shop";
         }
 
         return "redirect:/login?error";
@@ -251,7 +251,7 @@ public class HomeController {
         // Clear the real cart only after successful payment
         cartService.clearCart();
 
-        // Removes temporary payment data
+        // Removes  temporary payment data
         session.removeAttribute("pendingOrder");
         session.removeAttribute("pendingCartItems");
 
